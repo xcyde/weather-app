@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/main.css" rel="stylesheet" />
+    <title>SK Internship Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <section class="hero-section">
+        <div class="hero-section__container">
+          <label for="search">
+            <form class="search-bar">
+              <input id="search" class="search-bar__input" placeholder="Start typing to search..."></input>
+              <button type="submit" class="search-bar__button"></button>
+              <div class="search-bar__results"></div>
+            </form>
+          </label>
+          <div class="weather-details">
+            <div class="weather-details__container">
+              <div class="weather-details__current">
+                  <div class="weather-details__weather">
+                      <img class="weather-details__image">
+                      <div class="weather-details__description">
+                          <h2 class="weather-details__temperature-now"></h2>
+                          <div class="weather-details__name"></div>
+                          <div class="weather-details__name-detailed text-grey"></div>
+                      </div>
+                  </div>
+                  <div class="weather-details__location">
+                      <h2 class="weather-details__location-name">
+                        <span class="weather-details__location-name-city"></span>
+                        <span class="weather-details__location-name-country"></span>
+                      </h2>
+                      <div class="weather-details__date text-grey"></div>
+                  </div>
+              </div>
+              <div class="weather-details__footer">
+                <div class="weather-details__temperature-min">
+                  <span class="text-grey">Min</span><h2 class="weather-details__temperature-min-value"></h2>
+                </div>
+                <div class="weather-details__vertical-line"></div>
+                <div class="weather-details__temperature-max">
+                  <span class="text-grey">Max</span><h2 class="weather-details__temperature-max-value"></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="popular-cities">
+        <h1>Check the weather in most popular cities in</h1>
+        <h1>the world</h1>
+        <div class="popular-cities__list">
+          <div class="popular-city-item popular-city-item_new-york">
+            <div class="popular-city-item__button"><span>New York</span></div>
+          </div>
+          <div class="popular-city-item popular-city-item_london">
+            <div class="popular-city-item__button"><span>London</span></div>
+          </div>
+          <div class="popular-city-item popular-city-item_dubai">
+            <div class="popular-city-item__button"><span>Dubai</span></div>
+          </div>
+          <div class="popular-city-item popular-city-item_paris">
+            <div class="popular-city-item__button"><span>Paris</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="faq">
+        <h1>Frequently Asked Questions</h1>
+        <div id="q1" class="question">
+          <div class="question__header">
+            <span>Question 1</span>
+            <div class="question__icon question__icon_opened"></div>
+          </div>
+          <div class="question__body question__body_displayed">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</div>
+        </div>
+        <div id="q2" class="question">
+          <div class="question__header">
+            <span>Question 2</span>
+            <div class="question__icon question__icon_closed"></div>
+          </div>
+          <div class="question__body">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</div>
+        </div>
+        <div id="q3" class="question">
+          <div class="question__header">
+            <span>Question 3</span>
+            <div class="question__icon question__icon_closed"></div>
+          </div>
+          <div class="question__body">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</div>
+        </div>
+        <div id="q4" class="question">
+          <div class="question__header">
+            <span>Question 4</span>
+            <div class="question__icon question__icon_closed"></div>
+          </div>
+          <div class="question__body">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</div>
+        </div>
+      </section>
+      <footer>
+        <div class="footer__author-name">Aleksandr Belov</div>
+        <div class="footer__current-year"></div>
+      </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
