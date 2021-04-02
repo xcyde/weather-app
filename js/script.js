@@ -5,6 +5,7 @@
  */
 
 const API_KEY = "882a7f21e6cac480def281e05ec861b9";
+const RECENT_CITIES_AMOUNT = 5;
 
 //  decided to store here and not request on third-party resources
 const ISO_COUNTRIES = {
@@ -255,6 +256,10 @@ const ISO_COUNTRIES = {
   ZW: "Zimbabwe",
 };
 
+let recentCities = new Map();
+
+
+
 function getCountryName(countryCode) {
   if (ISO_COUNTRIES.hasOwnProperty(countryCode)) {
     return ISO_COUNTRIES[countryCode];
@@ -262,9 +267,6 @@ function getCountryName(countryCode) {
     return countryCode;
   }
 }
-
-//  renders Odessa, Ukraine as default location
-renderCity(698740);
 
 function getWeatherUrl(city) {
   //  different url for request by id and city name
@@ -275,6 +277,7 @@ function getWeatherUrl(city) {
 //  returns simplified object for easier manipulations
 function getCityCardObject(weatherApiObject) {
   return {
+    id: weatherApiObject.id,
     name: weatherApiObject.name,
     country: getCountryName(weatherApiObject.sys.country),
     date: moment().format("DD MMMM YYYY"),
@@ -316,6 +319,43 @@ function renderCity(city) {
   };
 }
 
+function updateRecentCities(cityCardObject) {
+  const newRecentCities = new Map();
+  let currentMapValues = [...recentCities.values()];
+
+  if (recentCities.has(cityCardObject.id)) {
+    currentMapValues = currentMapValues.filter(el => el.id !== cityCardObject.id);
+  } 
+  newRecentCities.set(cityCardObject.id, cityCardObject);
+
+  for (let i = 0; i < (currentMapValues.length < RECENT_CITIES_AMOUNT ? currentMapValues.length : RECENT_CITIES_AMOUNT - 1); i++) {
+    newRecentCities.set(currentMapValues[i].id, currentMapValues[i]);
+  }
+
+  recentCities = newRecentCities;
+}
+
+function writeRecentCitiesToLocalStorage() {
+  localStorage.clear();
+  const recentCitiesArr = [...recentCities.values()];
+  for (let i = 0; i < recentCitiesArr.length; i++) {
+    localStorage.setItem(i, JSON.stringify({id:recentCitiesArr[i].id, name:recentCitiesArr[i].name}));
+  }
+}
+
+function renderRecentCities() {
+  const recentCitiesElement = document.querySelector('.recent-cities');
+  recentCitiesElement.innerHTML = '';
+
+  recentCities.forEach(element => {
+    const divElement = document.createElement("div");
+    divElement.id = `recent${element.id}`;
+    divElement.textContent = element.name;
+    
+    recentCitiesElement.appendChild(divElement);
+  })
+}
+
 function render(cityCardObject) {
   const nameElement = document.querySelector(
     ".weather-details__location-name-city"
@@ -349,6 +389,37 @@ function render(cityCardObject) {
   weatherDetailedElement.innerHTML = cityCardObject.weatherDetailed;
   weatherIconElement.alt = cityCardObject.weatherDetailed;
   weatherIconElement.src = `http://openweathermap.org/img/wn/${cityCardObject.icon}d@2x.png`;
+
+  updateRecentCities(cityCardObject);
+  renderRecentCities();
+  writeRecentCitiesToLocalStorage();
+}
+
+/*
+* On load
+*/
+fillRecentCitiesFromStorage();
+renderLastCityFromStorage();
+
+function fillRecentCitiesFromStorage() {
+  // from key 4 to key 1, key 0 is rendering later
+  for (let i = RECENT_CITIES_AMOUNT; i > 0; i--) {
+    const city = JSON.parse(localStorage.getItem(i));
+    if (city) updateRecentCities(city);
+  }
+};
+
+//  renders last city from localStorage
+//  or Odessa, Ukraine as default location if localStorage is empty
+function renderLastCityFromStorage() {
+  const city = JSON.parse(localStorage.getItem(0));
+
+  if (city) {
+    updateRecentCities(city);
+    renderCity(city.id);
+  } else {
+    renderCity(698740);
+  }
 }
 
 /*
@@ -359,12 +430,19 @@ const searchInputElement = document.querySelector(".search-bar__input");
 const searchButtonElement = document.querySelector(".search-bar__button");
 const searchResultsElement = document.querySelector(".search-bar__results");
 const searchFormElement = document.querySelector(".search-bar");
+const recentCitiesElement = document.querySelector(".recent-cities");
 
 searchFormElement.addEventListener("submit", (e) => handleSearch(e));
+
+recentCitiesElement.addEventListener("click", (e) => handleRecent(e));
 
 function handleSearch(event) {
   event.preventDefault();
   getCities(searchInputElement.value, renderSearchResults);
+}
+
+function handleRecent(event) {
+  renderCity(parseInt(event.target.id.slice(6)));
 }
 
 //  hides search results
@@ -446,6 +524,7 @@ document.querySelectorAll(".popular-city-item").forEach((city) => {
   city.addEventListener("click", (event) => {
     const cityName = event.target.outerText;
 
+    // think it not working on safari, no possibilities to check
     window.scrollTo({
       top: 135,
       behavior: "smooth",
