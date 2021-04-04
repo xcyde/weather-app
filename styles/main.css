@@ -52,7 +52,6 @@ h1 {
 
 .hero-section {
   min-height: 426px;
-  background-image: url("../images/hero-bg.svg");
   margin-bottom: 70px;
 }
 
@@ -101,7 +100,6 @@ h1 {
   border: none;
   outline: none;
   border-radius: 50%;
-  background-color: #90caf9;
   background-image: url("../images/search-btn.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -109,7 +107,7 @@ h1 {
 }
 
 .search-bar__button:hover {
-  background-color: #9e9e9e;
+  background-color: #9e9e9e !important;
 }
 
 .search-bar__results {
@@ -160,6 +158,11 @@ h1 {
 
 .search-bar__item:hover {
   background-color: #90caf9;
+  color: white;
+}
+
+.search-bar__item-night:hover {
+  background-color: #2a344b;
   color: white;
 }
 

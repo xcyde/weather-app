@@ -388,7 +388,7 @@ function render(cityCardObject) {
   weatherElement.innerHTML = cityCardObject.weather;
   weatherDetailedElement.innerHTML = cityCardObject.weatherDetailed;
   weatherIconElement.alt = cityCardObject.weatherDetailed;
-  weatherIconElement.src = `http://openweathermap.org/img/wn/${cityCardObject.icon}d@2x.png`;
+  weatherIconElement.src = `http://openweathermap.org/img/wn/${cityCardObject.icon}${iconDayTimeModifier}@2x.png`;
 
   updateRecentCities(cityCardObject);
   renderRecentCities();
@@ -398,6 +398,15 @@ function render(cityCardObject) {
 /*
 * On load
 */
+
+//  if it is night theme, value changed to 'search-bar__item-night';
+let classNameNight = '';
+
+//  if it is night theme, value changed to 'n';
+let iconDayTimeModifier = 'd';
+const searchButtonElement = document.querySelector(".search-bar__button");
+
+setTheme();
 fillRecentCitiesFromStorage();
 renderLastCityFromStorage();
 
@@ -408,6 +417,26 @@ function fillRecentCitiesFromStorage() {
     if (city) updateRecentCities(city);
   }
 };
+
+
+function setTheme() {
+  const nightStart = moment().hour(21).minute(0).second(0).millisecond(0);
+  const nightEnd = moment().hour(6).minute(0).second(0).millisecond(0);
+  const heroSectionElement = document.querySelector('.hero-section');
+  
+  if (moment().diff(nightStart) > 0 || moment().diff(nightEnd) < 0) {
+    // night theme between 21:00 and 6:00
+    heroSectionElement.style.backgroundImage = "url(./images/hero-bg-night.png)";
+    searchButtonElement.style.backgroundColor = "#2A344B";
+    classNameNight = 'search-bar__item-night';
+    iconDayTimeModifier = 'n';
+  } else {
+    // day theme
+    heroSectionElement.style.backgroundImage = "url(./images/hero-bg.svg)";
+    searchButtonElement.style.backgroundColor = "#90CAF9";
+  }
+}
+
 
 //  renders last city from localStorage
 //  or Odessa, Ukraine as default location if localStorage is empty
@@ -427,7 +456,6 @@ function renderLastCityFromStorage() {
  */
 
 const searchInputElement = document.querySelector(".search-bar__input");
-const searchButtonElement = document.querySelector(".search-bar__button");
 const searchResultsElement = document.querySelector(".search-bar__results");
 const searchFormElement = document.querySelector(".search-bar");
 const recentCitiesElement = document.querySelector(".recent-cities");
@@ -486,7 +514,7 @@ function renderSearchResults(citiesArr) {
     citiesArr.forEach((element) => {
       const divElement = document.createElement("div");
       divElement.id = element.id;
-      divElement.className = "search-bar__item";
+      divElement.className = `search-bar__item ${classNameNight}`;
       divElement.textContent = `${element.name}, ${getCountryName(
         element.sys.country
       )}`;
