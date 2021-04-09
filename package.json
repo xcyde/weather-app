@@ -1,0 +1,29 @@
+{
+  "name": "sk-frontend-intern-test-task",
+  "version": "1.0.0",
+  "description": "Follow the link to [Figma](https://www.figma.com/file/MV15v0asVZlLyYCJvoXXth/SK-Internship-Weather-App?node-id=0%3A1) to find the layout. You can export all needed assets from the Figma file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xcyde/sk-frontend-intern-test-task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xcyde/sk-frontend-intern-test-task/issues"
+  },
+  "homepage": "https://github.com/xcyde/sk-frontend-intern-test-task#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {}
+}
