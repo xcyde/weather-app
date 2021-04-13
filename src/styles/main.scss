@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 $main-powderblue: #bfdce8;
 $main-blue: #90caf9;
@@ -8,7 +8,7 @@ $light-grey: #fafafa;
 $main-nightblue: #2a344b;
 
 %text-h1 {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0em;
@@ -17,7 +17,7 @@ $main-nightblue: #2a344b;
 }
 
 %text-h2 {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0em;
@@ -26,7 +26,7 @@ $main-nightblue: #2a344b;
 }
 
 %text-input {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: 0em;
@@ -37,11 +37,6 @@ $main-nightblue: #2a344b;
 %shadow-default {
   background: #c4c4c4;
   box-shadow: 0px 5px 10px rgba(33, 33, 33, 0.1);
-}
-
-* {
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -66,6 +61,7 @@ h2 {
 .hero-section {
   min-height: 426px;
   margin-bottom: 70px;
+  background-size: cover;
   @extend %shadow-default;
 
   &__container {
@@ -73,6 +69,14 @@ h2 {
     max-width: 600px;
     padding-top: 30px;
     padding-bottom: 50px;
+  }
+
+  &_day {
+    background-image: url('../images/hero-bg.svg');
+  }
+
+  &_night {
+    background-image: url('../images/hero-bg-night.png');
   }
 }
 
@@ -108,14 +112,14 @@ h2 {
     border: none;
     outline: none;
     border-radius: 50%;
-    background-image: url("../images/search-btn.svg");
+    background-image: url('../images/search-btn.svg');
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
   }
 
   &__button:hover {
-    background-color: $main-grey!important;
+    background-color: $main-grey !important;
   }
 
   &__results {
@@ -157,7 +161,7 @@ h2 {
     background-color: $main-blue;
     color: white;
   }
-  
+
   &__item-night:hover {
     background-color: $main-nightblue;
     color: white;
@@ -281,19 +285,19 @@ h2 {
   }
 
   &_new-york {
-    background-image: url("../images/popular-city-item/new-york.png");
+    background-image: url('../images/popular-city-item/new-york.png');
   }
 
   &_london {
-    background-image: url("../images/popular-city-item/london.png");
+    background-image: url('../images/popular-city-item/london.png');
   }
 
   &_dubai {
-    background-image: url("../images/popular-city-item/dubai.png");
+    background-image: url('../images/popular-city-item/dubai.png');
   }
 
   &_paris {
-    background-image: url("../images/popular-city-item/paris.png");
+    background-image: url('../images/popular-city-item/paris.png');
   }
 }
 
@@ -331,11 +335,11 @@ h2 {
   }
 
   &__icon_opened {
-    background-image: url("../images/question-shown.svg");
+    background-image: url('../images/question-shown.svg');
   }
 
   &__icon_closed {
-    background-image: url("../images/question-hidden.svg");
+    background-image: url('../images/question-hidden.svg');
   }
 
   &__body {

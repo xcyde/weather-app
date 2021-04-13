@@ -2,28 +2,51 @@
   "name": "sk-frontend-intern-test-task",
   "version": "1.0.0",
   "description": "Follow the link to [Figma](https://www.figma.com/file/MV15v0asVZlLyYCJvoXXth/SK-Internship-Weather-App?node-id=0%3A1) to find the layout. You can export all needed assets from the Figma file.",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch",
+    "start": "webpack serve --mode development --open"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xcyde/sk-frontend-intern-test-task.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alex",
   "license": "ISC",
+  "browserslist": "last 4 version",
   "bugs": {
     "url": "https://github.com/xcyde/sk-frontend-intern-test-task/issues"
   },
   "homepage": "https://github.com/xcyde/sk-frontend-intern-test-task#readme",
   "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "*",
+    "css-loader": "^5.2.1",
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^2.2.1"
+    "eslint-webpack-plugin": "^2.5.3",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "node-sass": "^5.0.0",
+    "postcss-loader": "^5.2.0",
+    "prettier": "^2.2.1",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.31.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.29.1",
+    "normalize.css": "^8.0.1"
+  }
 }

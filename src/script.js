@@ -1,4 +1,6 @@
-/* eslint-disable no-undef */
+import moment from 'moment';
+import './styles/main.scss';
+
 /*
  *  Common
  */
@@ -435,14 +437,13 @@ function setTheme() {
 
   if (moment().diff(nightStart) > 0 || moment().diff(nightEnd) < 0) {
     // night theme between 21:00 and 6:00
-    heroSectionElement.style.backgroundImage =
-      'url(./images/hero-bg-night.png)';
+    heroSectionElement.classList.add('hero-section_night');
     searchButtonElement.style.backgroundColor = '#2A344B';
     classNameNight = 'search-bar__item-night';
     iconDayTimeModifier = 'n';
   } else {
     // day theme
-    heroSectionElement.style.backgroundImage = 'url(./images/hero-bg.svg)';
+    heroSectionElement.classList.add('hero-section_day');
     searchButtonElement.style.backgroundColor = '#90CAF9';
   }
 }
@@ -564,7 +565,7 @@ recentCitiesElement.addEventListener('click', (e) => handleRecent(e));
 
 document.querySelectorAll('.popular-city-item').forEach((city) => {
   city.addEventListener('click', (event) => {
-    const cityName = event.target.outerText;
+    const cityName = event.target.textContent;
 
     // think it not working on safari, no possibilities to check
     window.scrollTo({
