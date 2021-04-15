@@ -1,0 +1,25 @@
+@import 'search-bar';
+@import 'recent-cities';
+@import 'weather-details';
+
+.hero-section {
+  min-height: 426px;
+  margin-bottom: 70px;
+  background-size: cover;
+  @extend %shadow-default;
+
+  &__container {
+    margin: 0 auto;
+    max-width: 600px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+
+  &_day {
+    background-image: url('../images/hero-bg.svg');
+  }
+
+  &_night {
+    background-image: url('../images/hero-bg-night.png');
+  }
+}

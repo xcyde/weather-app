@@ -1,0 +1,38 @@
+.popular-city-item {
+  width: 220px;
+  height: 220px;
+  border-radius: 30px;
+  margin: 0 20px 40px 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  cursor: pointer;
+
+  &__button {
+    width: 200px;
+    height: 36px;
+    background: #ffffff;
+    border-radius: 30px;
+    margin-bottom: 14px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_new-york {
+    background-image: url('../images/popular-city-item/new-york.png');
+  }
+
+  &_london {
+    background-image: url('../images/popular-city-item/london.png');
+  }
+
+  &_dubai {
+    background-image: url('../images/popular-city-item/dubai.png');
+  }
+
+  &_paris {
+    background-image: url('../images/popular-city-item/paris.png');
+  }
+}

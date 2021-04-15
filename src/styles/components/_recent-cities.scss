@@ -1,0 +1,21 @@
+.recent-cities {
+  min-height: 50px;
+  margin: 0 30px;
+  color: $main-grey;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  & > div {
+    margin-right: 10px;
+    border-bottom: 1px dashed $main-grey;
+    cursor: pointer;
+  }
+
+  & > div:hover {
+    color: $main-black;
+    margin-right: 10px;
+    border-bottom: 1px dashed $main-black;
+    cursor: pointer;
+  }
+}
