@@ -271,7 +271,7 @@ function getCountryName(countryCode) {
 function getWeatherUrl(city) {
   //  different url for request by id and city name
   const subString = `${Number.isInteger(+city) ? 'id' : 'q'}=${city}`;
-  return `http://api.openweathermap.org/data/2.5/weather?${subString}&units=metric&appid=${API_KEY}`;
+  return `https://api.openweathermap.org/data/2.5/weather?${subString}&units=metric&appid=${API_KEY}`;
 }
 
 function getRoundedTemperature(temperature) {
@@ -384,7 +384,7 @@ function render(cityCardObject) {
   weatherDetailedElement.innerHTML = cityCardObject.weatherDetailed;
   weatherIconElement.alt = cityCardObject.weatherDetailed;
   // eslint-disable-next-line no-use-before-define
-  weatherIconElement.src = `http://openweathermap.org/img/wn/${cityCardObject.icon}${iconDayTimeModifier}@2x.png`;
+  weatherIconElement.src = `https://openweathermap.org/img/wn/${cityCardObject.icon}${iconDayTimeModifier}@2x.png`;
 
   updateRecentCities(cityCardObject);
   renderRecentCities();
@@ -487,7 +487,7 @@ window.onclick = (event) => {
  */
 
 function getCities(cityName, callback) {
-  const findUrl = `http://api.openweathermap.org/data/2.5/find?q=${cityName}&appid=${API_KEY}`;
+  const findUrl = `https://api.openweathermap.org/data/2.5/find?q=${cityName}&appid=${API_KEY}`;
 
   // Using XMLHttpRequest for experience purposes, better to use fetch or axios.
   const xhr = new XMLHttpRequest();

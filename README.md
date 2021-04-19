@@ -1,5 +1,7 @@
 # Weather App
 
+Working production version [here](https://vigorous-archimedes-478d07.netlify.app/)
+
 ## Overview
 
 The Vanilla JavaScript Weather App is the application created as a solution of Steel Kiwi frontend intern test task.
